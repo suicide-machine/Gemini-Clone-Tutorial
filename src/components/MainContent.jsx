@@ -122,10 +122,12 @@ const MainContent = () => {
             <div className="flex gap-4 items-center">
               <MdAddPhotoAlternate className="text-2xl cursor-pointer" />
               <FaMicrophone className="text-2xl cursor-pointer" />
-              <IoMdSend
-                onClick={() => onSent()}
-                className="text-2xl cursor-pointer"
-              />
+              {input && (
+                <IoMdSend
+                  onClick={() => onSent()}
+                  className="text-2xl cursor-pointer"
+                />
+              )}
             </div>
           </div>
 

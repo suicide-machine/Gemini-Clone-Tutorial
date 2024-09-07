@@ -7,7 +7,7 @@ import { Context } from "../context/Context"
 
 const Sidebar = () => {
   const [extended, setExtended] = useState(false)
-  const { onSent, prevPrompt, setRecentPrompt } = useContext(Context)
+  const { onSent, prevPrompt, setRecentPrompt, newChat } = useContext(Context)
 
   const loadPrompt = async (prompt) => {
     setRecentPrompt(prompt)
@@ -23,14 +23,17 @@ const Sidebar = () => {
           className="text-2xl block cursor-pointer"
         />
 
-        <div className="mt-[10px] inline-flex items-center gap-[10px] py-[10px] px-[15px] text-[14px] text-gray-500 cursor-pointer bg-gray-300 rounded-full">
+        <div
+          onClick={() => newChat()}
+          className="mt-[10px] inline-flex items-center gap-[10px] py-[10px] px-[15px] text-[14px] text-gray-500 cursor-pointer bg-gray-300 rounded-full"
+        >
           <FaPlus className="text-2xl" />
 
           {extended && <p>New Chat</p>}
         </div>
 
         {extended && (
-          <div className="flex flex-col">
+          <div className="flex flex-col animate-fadeIn duration-1000">
             <p className="mt-7 mb-5">Recent</p>
 
             {prevPrompt?.map((item, index) => {
